@@ -1,0 +1,25 @@
+# Data frame
+n <- 30 
+group <- rep(c("Treatment1", "Treatment2", "Treatment3"), each = n)
+value <- c(rnorm(n, mean = 20, sd = 5),   
+           rnorm(n, mean = 22, sd = 5),   
+           rnorm(n, mean = 25, sd = 5))   
+
+
+# Create the dataframe
+my_data <- data.frame(group = group, value = value)
+
+
+#Perform the ANOVA
+anova_result <- aov(value ~ group, data = my_data)
+summary(anova_result)  
+
+#PLOT
+
+
+boxplot(value ~ group, data = my_data, 
+        main = "Boxplot of Values by Treatment",
+        xlab = "Treatment",
+        ylab = "Value",
+        col = c("darkblue", "darkgreen", "darkred"),
+        border = "black")
